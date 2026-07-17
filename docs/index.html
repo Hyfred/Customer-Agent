@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer-Agent: Overcoming Context Limitations in Ultra-Long Shopping Trajectories</title>
+<meta name="description" content="Customer-Agent: a tool-augmented, RLVR-trained agent framework for reasoning over ultra-long shopping trajectories, with the ShopTrajQA long-context benchmark.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Customer-Agent: Overcoming Context Limitations in Ultra-Long Shopping Trajectories via Tool-Augmented Agents and RLVR">
+<meta property="og:description" content="A tool-augmented, RLVR-trained agent framework for reasoning over ultra-long shopping trajectories, with the ShopTrajQA long-context benchmark.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="container">
+    <p class="venue">Preprint · 2026</p>
+    <h1 class="title">Customer-Agent</h1>
+    <p class="subtitle">Overcoming Context Limitations in Ultra-Long Shopping Trajectories<br>via Tool-Augmented Agents and RLVR</p>
+
+    <div class="authors">
+      <span><a href="#">Hongye Liu</a><sup>1,&#9733;</sup></span>
+      <span><a href="#">Rongmei Lin</a><sup>2</sup></span>
+      <span><a href="#">Anurag Kashyap</a><sup>2</sup></span>
+      <span><a href="#">Hejie Cui</a><sup>2</sup></span>
+      <span><a href="#">Ricardo Henao</a><sup>1</sup></span>
+      <span><a href="#">Besnik Fetahu</a><sup>2</sup></span>
+      <span><a href="#">Bing Yin</a><sup>2</sup></span>
+    </div>
+
+    <div class="affiliations">
+      <span><sup>1</sup>Duke University</span>
+      <span><sup>2</sup>Amazon</span>
+    </div>
+    <p class="notes"><sup>&#9733;</sup>Work done during an internship at Amazon.</p>
+
+    <!-- Link buttons -->
+    <div class="buttons">
+      <a class="btn" href="https://arxiv.org/pdf/2606.07995v1" target="_blank" rel="noopener">
+        <span class="ico">&#128196;</span> Paper
+      </a>
+      <a class="btn" href="https://arxiv.org/abs/2606.07995v1" target="_blank" rel="noopener">
+        <span class="ico">&#119909;</span> arXiv
+      </a>
+      <a class="btn" href="https://huggingface.co/datasets/hongyeeliu/ShopTrajQA" target="_blank" rel="noopener">
+        <span class="ico">&#129303;</span> Dataset
+      </a>
+      <a class="btn" href="https://github.com/Hyfred/Customer-Agent" target="_blank" rel="noopener">
+        <span class="ico">&#128187;</span> Code
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== TEASER ===== -->
+<section class="section">
+  <div class="container narrow">
+    <div class="figure">
+      <img src="static/pipeline.svg" alt="Customer-Agent pipeline: ultra-long shopping trajectory stored as an external file, queried by a code-interpreter agent trained with RLVR.">
+      <p class="caption"><b>Figure 1.</b> Instead of forcing an ultra-long shopping trajectory into a fixed context window, Customer-Agent stores it as an external local file and trains the model — via Reinforcement Learning with Verifiable Rewards (RLVR) — to autonomously retrieve and parse it through code-interpreter interactions (e.g., SQL queries).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABSTRACT ===== -->
+<section class="section alt">
+  <div class="container narrow">
+    <h2>Abstract</h2>
+    <p class="abstract">
+      Understanding customer shopping trajectories is essential for enabling personalized shopping experiences. However, shopping records (i.e., a customer's searches, clicks, purchases, etc.) often span long time horizons over multiple years, resulting in extremely long trajectories that pose significant challenges for existing large language models (LLMs).
+      Despite the importance of this problem, existing benchmarks are limited to short customer trajectories, while real-world trajectories from large e-commerce platforms are rarely accessible due to data privacy constraints. To address this gap, we introduce <b>ShopTrajQA</b>, a long-context evaluation benchmark constructed from real-world product information and simulated shopping trajectories.
+      The dataset includes variants of up to <b>32k and 64k tokens</b>, enabling systematic evaluation of model robustness under varying context lengths. Through comprehensive benchmarking of frontier LLMs, we identify critical performance gaps in reasoning over long shopping-trajectory data. To address these challenges, we propose a <b>Customer Agent Framework</b> for ultra-long context management. Leveraging a Reinforcement Learning with Verifiable Rewards (RLVR) agentic training paradigm, our approach stores trajectories as external local files and trains the agent to autonomously retrieve and parse them through code-interpreter interactions (e.g., SQL queries), effectively bypassing the fixed in-context window constraints of LLMs.
+      Experimental results demonstrate that our framework achieves strong performance on ShopTrajQA and generalizes to other complex reasoning tasks.
+    </p>
+  </div>
+</section>
+
+<!-- ===== DATASET ===== -->
+<section class="section">
+  <div class="container narrow">
+    <h2>ShopTrajQA &amp; Training Data</h2>
+    <p class="lead">All training and evaluation data are released on Hugging Face:
+      <a href="https://huggingface.co/datasets/hongyeeliu/ShopTrajQA" target="_blank" rel="noopener">hongyeeliu/ShopTrajQA</a>.</p>
+    <div class="stats">
+      <div class="stat">
+        <div class="num">762</div>
+        <div class="lbl">SFT trajectories<br><span>multi-turn, tool-use</span></div>
+      </div>
+      <div class="stat">
+        <div class="num">10,822</div>
+        <div class="lbl">RLVR samples<br><span>verifiable rewards</span></div>
+      </div>
+      <div class="stat">
+        <div class="num">32k / 64k</div>
+        <div class="lbl">context variants<br><span>long-context eval</span></div>
+      </div>
+      <div class="stat">
+        <div class="num">2 &times; 100</div>
+        <div class="lbl">eval test sets<br><span>32k &amp; full</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== METHOD HIGHLIGHTS ===== -->
+<section class="section alt">
+  <div class="container narrow">
+    <h2>Highlights</h2>
+    <ul class="highlights">
+      <li><b>New long-context benchmark.</b> ShopTrajQA is built from real product information and simulated shopping trajectories, with 32k/64k-token variants for stress-testing context robustness.</li>
+      <li><b>Tool-augmented agent.</b> The trajectory lives as an external file; the agent answers questions by writing and executing code (e.g., SQL) in a sandbox instead of ingesting the whole trajectory.</li>
+      <li><b>RLVR training.</b> A Reinforcement-Learning-with-Verifiable-Rewards paradigm teaches the agent to retrieve and reason autonomously, bypassing fixed context windows.</li>
+      <li><b>Generalization.</b> The framework achieves strong performance on ShopTrajQA and transfers to other complex reasoning tasks.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== BIBTEX ===== -->
+<section class="section">
+  <div class="container narrow">
+    <h2>BibTeX</h2>
+    <pre class="bibtex">@article{liu2026customeragent,
+  title   = {Customer-Agent: Overcoming Context Limitations in Ultra-Long
+             Shopping Trajectories via Tool-Augmented Agents and RLVR},
+  author  = {Liu, Hongye and Lin, Rongmei and Kashyap, Anurag and Cui, Hejie
+             and Henao, Ricardo and Fetahu, Besnik and Yin, Bing},
+  journal = {arXiv preprint arXiv:2606.07995},
+  year    = {2026}
+}</pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container narrow">
+    <p>Website template inspired by the <a href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noopener">Nerfies</a> project page.
+    Source available on <a href="https://github.com/Hyfred/Customer-Agent" target="_blank" rel="noopener">GitHub</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
