@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Logs
+*.log
+*.lo
+
+# Secrets / credentials — never commit these
+.env
+.env.*
+*.pem
+*.key
+credentials
+aws_credentials
+
+# Data / checkpoints (large, keep out of git)
+*.ckpt
+*.safetensors
+wandb/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
