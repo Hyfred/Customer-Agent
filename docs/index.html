@@ -56,29 +56,6 @@
   </div>
 </header>
 
-<!-- ===== TEASER ===== -->
-<section class="section">
-  <div class="container narrow">
-    <div class="figure">
-      <img src="static/pipeline.svg" alt="Customer-Agent pipeline: ultra-long shopping trajectory stored as an external file, queried by a code-interpreter agent trained with RLVR.">
-      <p class="caption"><b>Figure 1.</b> Instead of forcing an ultra-long shopping trajectory into a fixed context window, Customer-Agent stores it as an external local file and trains the model — via Reinforcement Learning with Verifiable Rewards (RLVR) — to autonomously retrieve and parse it through code-interpreter interactions (e.g., SQL queries).</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== ABSTRACT ===== -->
-<section class="section alt">
-  <div class="container narrow">
-    <h2>Abstract</h2>
-    <p class="abstract">
-      Understanding customer shopping trajectories is essential for enabling personalized shopping experiences. However, shopping records (i.e., a customer's searches, clicks, purchases, etc.) often span long time horizons over multiple years, resulting in extremely long trajectories that pose significant challenges for existing large language models (LLMs).
-      Despite the importance of this problem, existing benchmarks are limited to short customer trajectories, while real-world trajectories from large e-commerce platforms are rarely accessible due to data privacy constraints. To address this gap, we introduce <b>ShopTrajQA</b>, a long-context evaluation benchmark constructed from real-world product information and simulated shopping trajectories.
-      The dataset includes variants of up to <b>32k and 64k tokens</b>, enabling systematic evaluation of model robustness under varying context lengths. Through comprehensive benchmarking of frontier LLMs, we identify critical performance gaps in reasoning over long shopping-trajectory data. To address these challenges, we propose a <b>Customer Agent Framework</b> for ultra-long context management. Leveraging a Reinforcement Learning with Verifiable Rewards (RLVR) agentic training paradigm, our approach stores trajectories as external local files and trains the agent to autonomously retrieve and parse them through code-interpreter interactions (e.g., SQL queries), effectively bypassing the fixed in-context window constraints of LLMs.
-      Experimental results demonstrate that our framework achieves strong performance on ShopTrajQA and generalizes to other complex reasoning tasks.
-    </p>
-  </div>
-</section>
-
 <!-- ===== DATASET ===== -->
 <section class="section">
   <div class="container narrow">
@@ -103,6 +80,29 @@
         <div class="lbl">eval test sets<br><span>32k &amp; full</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== TEASER ===== -->
+<section class="section alt">
+  <div class="container narrow">
+    <div class="figure">
+      <img src="static/pipeline.svg" alt="Customer-Agent pipeline: ultra-long shopping trajectory stored as an external file, queried by a code-interpreter agent trained with RLVR.">
+      <p class="caption"><b>Figure 1.</b> Instead of forcing an ultra-long shopping trajectory into a fixed context window, Customer-Agent stores it as an external local file and trains the model — via Reinforcement Learning with Verifiable Rewards (RLVR) — to autonomously retrieve and parse it through code-interpreter interactions (e.g., SQL queries).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABSTRACT ===== -->
+<section class="section">
+  <div class="container narrow">
+    <h2>Abstract</h2>
+    <p class="abstract">
+      Understanding customer shopping trajectories is essential for enabling personalized shopping experiences. However, shopping records (i.e., a customer's searches, clicks, purchases, etc.) often span long time horizons over multiple years, resulting in extremely long trajectories that pose significant challenges for existing large language models (LLMs).
+      Despite the importance of this problem, existing benchmarks are limited to short customer trajectories, while real-world trajectories from large e-commerce platforms are rarely accessible due to data privacy constraints. To address this gap, we introduce <b>ShopTrajQA</b>, a long-context evaluation benchmark constructed from real-world product information and simulated shopping trajectories.
+      The dataset includes evaluation variants of up to <b>32k and 64k tokens</b>, enabling systematic evaluation of model robustness under varying context lengths. Beyond the evaluation benchmark, we also release accompanying <b>training data</b>, comprising a supervised fine-tuning (SFT) set of verified multi-turn tool-use trajectories and a Reinforcement Learning with Verifiable Rewards (RLVR) set with executable, automatically-checkable answers, providing a complete resource for building agents that reason over long shopping trajectories. Through comprehensive benchmarking of frontier LLMs, we identify critical performance gaps in reasoning over long shopping-trajectory data. To address these challenges, we propose a <b>Customer Agent Framework</b> for ultra-long context management. Leveraging an RLVR agentic training paradigm, our approach stores trajectories as external local files and trains the agent to autonomously retrieve and parse them through code-interpreter interactions (e.g., SQL queries), effectively bypassing the fixed in-context window constraints of LLMs.
+      Experimental results demonstrate that our framework achieves strong performance on ShopTrajQA and generalizes to other complex reasoning tasks.
+    </p>
   </div>
 </section>
 
